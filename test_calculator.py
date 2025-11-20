@@ -2,7 +2,6 @@
 #Hitesh K
 #Nobody
 
-
 import unittest
 import calculator
 
@@ -15,12 +14,16 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(calculator.mul(-2, 5), -10)
         self.assertEqual(calculator.mul(0, 10), 0)
         self.assertAlmostEqual(calculator.mul(2.5, 4), 10.0)
+        self.assertEqual(calculator.mul(-3, -7), 21)
+        self.assertAlmostEqual(calculator.mul(0.5, 0.2), 0.1)
 
     def test_divide(self):
         # Test basic division (using div function - remember: div(a, b) returns b / a)
         self.assertEqual(calculator.div(2, 10), 5)
         self.assertEqual(calculator.div(5, 20), 4)
         self.assertAlmostEqual(calculator.div(3, 9), 3.0)
+        self.assertAlmostEqual(calculator.div(4, 1), 0.25)
+        self.assertEqual(calculator.div(10, 100), 10)
 
         # Test division by zero raises error
         with self.assertRaises(ZeroDivisionError):
@@ -56,6 +59,8 @@ class TestCalculator(unittest.TestCase):
         # Test with other values
         self.assertAlmostEqual(calculator.hypotenuse(5, 12), 13.0)
         self.assertAlmostEqual(calculator.hypotenuse(1, 1), 1.414213562, places=5)
+        self.assertAlmostEqual(calculator.hypotenuse(6, 8), 10.0)
+        self.assertAlmostEqual(calculator.hypotenuse(0, 5), 5.0)
 
         # Test with negative values (should raise ValueError)
         with self.assertRaises(ValueError):
@@ -70,6 +75,8 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(calculator.square_root(16), 4.0)
         self.assertAlmostEqual(calculator.square_root(2), 1.414213562, places=5)
         self.assertAlmostEqual(calculator.square_root(0), 0.0)
+        self.assertAlmostEqual(calculator.square_root(25), 5.0)
+        self.assertAlmostEqual(calculator.square_root(100), 10.0)
 
         # Test negative value (should raise ValueError)
         with self.assertRaises(ValueError):
