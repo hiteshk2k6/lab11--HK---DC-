@@ -1,6 +1,8 @@
 #https://github.com/hiteshk2k6/lab11--HK---DC-.git
 #Hitesh K
 #Nobody
+
+
 import unittest
 import calculator
 
@@ -8,21 +10,21 @@ import calculator
 class TestCalculator(unittest.TestCase):
 
     def test_multiply(self):
-        # Test basic multiplication
-        self.assertEqual(calculator.multiply(3, 4), 12)
-        self.assertEqual(calculator.multiply(-2, 5), -10)
-        self.assertEqual(calculator.multiply(0, 10), 0)
-        self.assertAlmostEqual(calculator.multiply(2.5, 4), 10.0)
+        # Test basic multiplication (using mul function)
+        self.assertEqual(calculator.mul(3, 4), 12)
+        self.assertEqual(calculator.mul(-2, 5), -10)
+        self.assertEqual(calculator.mul(0, 10), 0)
+        self.assertAlmostEqual(calculator.mul(2.5, 4), 10.0)
 
     def test_divide(self):
-        # Test basic division (remember: divide(a, b) returns b / a)
-        self.assertEqual(calculator.divide(2, 10), 5)
-        self.assertEqual(calculator.divide(5, 20), 4)
-        self.assertAlmostEqual(calculator.divide(3, 9), 3.0)
+        # Test basic division (using div function - remember: div(a, b) returns b / a)
+        self.assertEqual(calculator.div(2, 10), 5)
+        self.assertEqual(calculator.div(5, 20), 4)
+        self.assertAlmostEqual(calculator.div(3, 9), 3.0)
 
         # Test division by zero raises error
         with self.assertRaises(ZeroDivisionError):
-            calculator.divide(0, 10)
+            calculator.div(0, 10)
 
     def test_log_invalid_argument(self):
         # Test that logarithm raises ValueError for invalid inputs

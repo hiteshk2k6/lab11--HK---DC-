@@ -36,4 +36,3 @@ def hypotenuse(a, b):
     if a < 0 or b < 0:
         raise ValueError("Cannot have negative side lengths")
     return math.hypot(a, b)
-
