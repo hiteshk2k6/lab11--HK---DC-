@@ -1,55 +1,78 @@
+#https://github.com/hiteshk2k6/lab11--HK---DC-.git
+#Hitesh K
+#Nobody
 import unittest
-from calculator import *
+import calculator
+
 
 class TestCalculator(unittest.TestCase):
-    ######### Partner 2
-    # def test_add(self): # 3 assertions
-    #     fill in code
 
-    # def test_subtract(self): # 3 assertions
-    #     fill in code
-    # ##########################
+    def test_multiply(self):
+        # Test basic multiplication
+        self.assertEqual(calculator.multiply(3, 4), 12)
+        self.assertEqual(calculator.multiply(-2, 5), -10)
+        self.assertEqual(calculator.multiply(0, 10), 0)
+        self.assertAlmostEqual(calculator.multiply(2.5, 4), 10.0)
 
-    ######## Partner 1
-    # def test_multiply(self): # 3 assertions
-    #     fill in code
+    def test_divide(self):
+        # Test basic division (remember: divide(a, b) returns b / a)
+        self.assertEqual(calculator.divide(2, 10), 5)
+        self.assertEqual(calculator.divide(5, 20), 4)
+        self.assertAlmostEqual(calculator.divide(3, 9), 3.0)
 
-    # def test_divide(self): # 3 assertions
-    #     fill in code
-    # ##########################
+        # Test division by zero raises error
+        with self.assertRaises(ZeroDivisionError):
+            calculator.divide(0, 10)
 
-    ######## Partner 2
-    # def test_divide_by_zero(self): # 1 assertion
-    #     # call division function inside, example:
-    #     # with self.assertRaises(<INSERT_ERROR_TYPE>):
-    #     #     div(0, 5)
-    #     fill in code
+    def test_log_invalid_argument(self):
+        # Test that logarithm raises ValueError for invalid inputs
 
-    # def test_logarithm(self): # 3 assertions
-    #     fill in code
+        # Negative base
+        with self.assertRaises(ValueError):
+            calculator.logarithm(-2, 8)
 
-    # def test_log_invalid_base(self): # 1 assertion
-    #     # use same technique from test_divide_by_zero
-    #     fill in code
-    # ##########################
-    
-    ######## Partner 1
-    # def test_log_invalid_argument(self): # 1 assertion
-    #     # call log function inside, example:
-    #     # with self.assertRaises(<INSERT_ERROR_TYPE>):
-    #     #     logarithm(0, 5)
-    #     fill in code
+        # Negative argument
+        with self.assertRaises(ValueError):
+            calculator.logarithm(2, -8)
 
-    # def test_hypotenuse(self): # 3 assertions
-    #     fill in code
+        # Zero base
+        with self.assertRaises(ValueError):
+            calculator.logarithm(0, 8)
 
-    # def test_sqrt(self): # 3 assertions
-    #     # Test for invalid argument, example:
-    #     # with self.assertRaises(<INSERT_ERROR_TYPE>):
-    #     #    square_root(NUM)
-    #     # Test basic function
-    #     fill in code
-    ##########################
+        # Zero argument
+        with self.assertRaises(ValueError):
+            calculator.logarithm(2, 0)
+
+        # Base of 1 (undefined)
+        with self.assertRaises(ValueError):
+            calculator.logarithm(1, 8)
+
+    def test_hypotenuse(self):
+        # Test Pythagorean theorem: hypotenuse of 3-4-5 triangle
+        self.assertAlmostEqual(calculator.hypotenuse(3, 4), 5.0)
+
+        # Test with other values
+        self.assertAlmostEqual(calculator.hypotenuse(5, 12), 13.0)
+        self.assertAlmostEqual(calculator.hypotenuse(1, 1), 1.414213562, places=5)
+
+        # Test with negative values (should raise ValueError)
+        with self.assertRaises(ValueError):
+            calculator.hypotenuse(-3, 4)
+        with self.assertRaises(ValueError):
+            calculator.hypotenuse(3, -4)
+
+    def test_sqrt(self):
+        # Test basic square roots
+        self.assertAlmostEqual(calculator.square_root(4), 2.0)
+        self.assertAlmostEqual(calculator.square_root(9), 3.0)
+        self.assertAlmostEqual(calculator.square_root(16), 4.0)
+        self.assertAlmostEqual(calculator.square_root(2), 1.414213562, places=5)
+        self.assertAlmostEqual(calculator.square_root(0), 0.0)
+
+        # Test negative value (should raise ValueError)
+        with self.assertRaises(ValueError):
+            calculator.square_root(-4)
+
 
 # Do not touch this
 if __name__ == "__main__":
